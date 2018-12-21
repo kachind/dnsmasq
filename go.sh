@@ -2,7 +2,7 @@
 sudo apt-get install docker
 sudo docker run --rm --cap-add=NET_ADMIN --net=host quay.io/coreos/dnsmasq \
   -d -q \
-  --dhcp-range=192.168.1.3,192.168.1.254 \
+  --dhcp-range=192.168.6.1,192.168.6.254 \
   --enable-tftp --tftp-root=/var/lib/tftpboot \
   --dhcp-match=set:bios,option:client-arch,0 \
   --dhcp-boot=tag:bios,undionly.kpxe \
