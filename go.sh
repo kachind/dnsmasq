@@ -13,7 +13,7 @@ sudo docker run --rm --cap-add=NET_ADMIN --net=host quay.io/coreos/dnsmasq \
   --dhcp-match=set:efi64,option:client-arch,9 \
   --dhcp-boot=tag:efi64,ipxe.efi \
   --dhcp-userclass=set:ipxe,iPXE \
-  --dhcp-boot=tag:ipxe,http://matchbox.example.com:8080/boot.ipxe \
+  --dhcp-boot=tag:https://github.com/kachind/dnsmasq/raw/master/rancheros.ipxe \
   --address=/matchbox.example.com/192.168.1.2 \
   --log-queries \
   --log-dhcp
