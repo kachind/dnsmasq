@@ -4,6 +4,6 @@
 # Location of Kernel/Initrd images
 set base-url http://releases.rancher.com/os/latest
 
-kernel ${base-url}/vmlinuz rancher.state.dev=LABEL=RANCHER_STATE rancher.state.autoformat=[/dev/sda] rancher.cloud_init.datasources=[url:https://raw.githubusercontent.com/kachind/rancheros-cloud-config/master/cloud-config.yml]
+kernel ${base-url}/vmlinuz rancher.autologin=tty1 rancher.state.dev=LABEL=RANCHER_STATE rancher.state.autoformat=[/dev/sda] rancher.cloud_init.datasources=[url:http://ec2-18-219-205-208.us-east-2.compute.amazonaws.com/cloud-config]
 initrd ${base-url}/initrd
 boot
