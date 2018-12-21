@@ -2,18 +2,10 @@
 sudo apt-get install -y docker.io
 sudo docker run --rm --cap-add=NET_ADMIN --net=host quay.io/coreos/dnsmasq \
   -d -q \
-  --dhcp-range=192.168.6.1,192.168.6.254 \
+  --dhcp-range=192.168.1.1,proxy,255.255.0.0 \
   --enable-tftp --tftp-root=/var/lib/tftpboot \
-  --dhcp-match=set:bios,option:client-arch,0 \
-  --dhcp-boot=tag:bios,undionly.kpxe \
-  --dhcp-match=set:efi32,option:client-arch,6 \
-  --dhcp-boot=tag:efi32,ipxe.efi \
-  --dhcp-match=set:efibc,option:client-arch,7 \
-  --dhcp-boot=tag:efibc,ipxe.efi \
-  --dhcp-match=set:efi64,option:client-arch,9 \
-  --dhcp-boot=tag:efi64,ipxe.efi \
   --dhcp-userclass=set:ipxe,iPXE \
-  --dhcp-boot=tag:https://github.com/kachind/dnsmasq/raw/master/rancheros.ipxe \
-  --address=/matchbox.example.com/192.168.1.2 \
+  --pxe-service=tag:#ipxe,x86PC,"PXE chainload to iPXE",undionly.kpxe \
+  --pxe-service=tag:ipxe,x86PC,"iPXE",https://github.com/kachind/dnsmasq/raw/master/rancheros.ipxe \
   --log-queries \
   --log-dhcp
