@@ -6,6 +6,6 @@ sudo docker run --rm --cap-add=NET_ADMIN --net=host quay.io/coreos/dnsmasq \
   --enable-tftp --tftp-root=/var/lib/tftpboot \
   --dhcp-userclass=set:ipxe,iPXE \
   --pxe-service=tag:#ipxe,x86PC,"PXE chainload to iPXE",undionly.kpxe \
-  --pxe-service=tag:ipxe,x86PC,"iPXE",https://github.com/kachind/dnsmasq/raw/master/rancheros.ipxe \
+  --pxe-service=tag:ipxe,x86PC,"iPXE",http://github.com/kachind/dnsmasq/raw/master/rancheros.ipxe \
   --log-queries \
   --log-dhcp
