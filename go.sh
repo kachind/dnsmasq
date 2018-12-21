@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt-get install docker.io
+sudo apt-get install -y docker.io
 sudo docker run --rm --cap-add=NET_ADMIN --net=host quay.io/coreos/dnsmasq \
   -d -q \
   --dhcp-range=192.168.6.1,192.168.6.254 \
