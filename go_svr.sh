@@ -4,7 +4,7 @@ sudo wget -N https://github.com/kachind/dnsmasq/raw/master/undionly.pxe -O /var/
 sudo docker run -v /var/lib/tftpboot:/var/lib/tftpboot \
 --rm --cap-add=NET_ADMIN --net=host quay.io/coreos/dnsmasq \
   -d -q \
-  --dhcp-range=192.168.1.1,proxy,255.255.0.0 \
+  --dhcp-range=192.168.7.1,proxy,255.255.0.0 \
   --enable-tftp --tftp-root=/var/lib/tftpboot \
   --dhcp-userclass=set:ipxe,iPXE \
   --pxe-service=tag:#ipxe,x86PC,"PXE chainload to iPXE",intel.kpxe \
