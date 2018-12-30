@@ -12,6 +12,6 @@ sudo docker run --rm --cap-add=NET_ADMIN --net=host quay.io/coreos/dnsmasq \
   --dhcp-boot=net:UEFI32,ipxe.efi \
   --dhcp-boot=net:UEFI,ipxe.efi \
   --dhcp-boot=net:UEFI64,ipxe.efi \
-  --pxe-service=http://ec2-18-219-205-208.us-east-2.compute.amazonaws.com/rancheros.ipxe \
+  --pxe-service=x86PC,http://ec2-18-219-205-208.us-east-2.compute.amazonaws.com/rancheros.ipxe \
   --log-queries \
   --log-dhcp
