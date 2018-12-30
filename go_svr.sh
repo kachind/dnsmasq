@@ -1,5 +1,6 @@
 #!/bin/bash
 sudo apt-get install -y docker.io
+sudo wget https://github.com/kachind/dnsmasq/raw/master/intel.kpxe -O /var/lib/tftpboot 
 sudo docker run -v /var/lib/tftpboot:/var/lib/tftpboot
 --rm --cap-add=NET_ADMIN --net=host quay.io/coreos/dnsmasq \
   -d -q \
