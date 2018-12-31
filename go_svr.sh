@@ -9,6 +9,6 @@ sudo docker run -v /var/lib/tftpboot:/var/lib/tftpboot \
   --dhcp-userclass=set:ipxe,iPXE \
   --pxe-service=tag:#ipxe,x86PC,"PXE chainload to iPXE",ipxe.pxe \
   --address=/ec2-18-219-205-208.us-east-2.compute.amazonaws.com/18.219.205.208 \
-  --pxe-service=tag:ipxe,x86PC,"iPXE",http://ec2-18-219-205-208.us-east-2.compute.amazonaws.com/rancheros.ipxe \
+  --pxe-service=tag:ipxe,x86PC,"iPXE",http://ec2-18-219-205-208.us-east-2.compute.amazonaws.com/rancheros_svr.ipxe \
   --log-queries \
   --log-dhcp
