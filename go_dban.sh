@@ -8,7 +8,7 @@ sudo umount /mnt
 cd /var/lib/tftpboot
 sudo wget http://mirrors.tummy.com/pub/ftp.ubuntulinux.org/ubuntu/dists/precise/main/installer-i386/current/images/netboot/ubuntu-installer/i386/pxelinux.0
 sudo mkdir /var/lib/tftpboot/pxelinux.cfg
-wget -O /var/lib/tftpboot/pxelinux.cfg/default https://raw.githubusercontent.com/kachind/dban/master/default
+sudo wget -O /var/lib/tftpboot/pxelinux.cfg/default https://raw.githubusercontent.com/kachind/dban/master/default
 sudo chmod -R 755 /var/lib/tftpboot/
 
 sleep 30
