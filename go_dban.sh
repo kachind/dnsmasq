@@ -1,6 +1,7 @@
 #!/bin/bash
 wget -O /tmp/dban.iso https://github.com/kachind/dban/raw/master/dban-2.3.0_i586.iso
 sudo mount -o loop /tmp/dban.iso /mnt
+sudo mkdir /var/lib/tftpboot
 sudo cp -a /mnt /var/lib/tftpboot
 sudo mv /var/lib/tftpboot/mnt/* /var/lib/tftpboot
 sudo rm -r /var/lib/tftpboot/mnt
