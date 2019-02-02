@@ -19,7 +19,6 @@ sudo docker run -v /var/lib/tftpboot:/var/lib/tftpboot \
   -d -q \
   --dhcp-range=192.168.7.1,proxy,255.255.255.0 \
   --enable-tftp --tftp-root=/var/lib/tftpboot \
-  --dhcp-userclass=set:ipxe,iPXE \
   --dhcp-boot=pxelinux.0 \
   --log-queries \
   --log-dhcp
