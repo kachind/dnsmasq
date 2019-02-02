@@ -5,14 +5,14 @@ sudo cp /mnt/\* /var/lib/tftpboot
 cd /var/lib/tftpboot
 sudo wget http://mirrors.tummy.com/pub/ftp.ubuntulinux.org/ubuntu/dists/precise/main/installer-i386/current/images/netboot/ubuntu-installer/i386/pxelinux.0
 sudo mkdir /var/lib/tftpboot/pxelinux.cfg
-sudo nano /var/lib/tftpboot/pxelinux.cfg/default
---
+FILE="/var/lib/tftpboot/pxelinux.cfg/default"
+sudo /bin/cat <<EOM >$FILE
 DEFAULT autonuke
 
 LABEL autonuke
 KERNEL dban.bzi
 APPEND nuke="dwipe --autonuke" silent
---
+EOM
 
 sudo chmod -R 755 /var/lib/tftpboot/
 
