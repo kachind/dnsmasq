@@ -15,3 +15,14 @@ APPEND nuke="dwipe --autonuke" silent
 --
 
 sudo chmod -R 755 /var/lib/tftpboot/
+
+sudo apt-get install -y docker.io
+sudo docker run -v /var/lib/tftpboot:/var/lib/tftpboot \
+--rm --cap-add=NET_ADMIN --net=host quay.io/coreos/dnsmasq \
+  -d -q \
+  --dhcp-range=192.168.7.1,proxy,255.255.255.0 \
+  --enable-tftp --tftp-root=/var/lib/tftpboot \
+  --dhcp-userclass=set:ipxe,iPXE \
+  --dhcp-boot=pxelinux.0 \
+  --log-queries \
+  --log-dhcp
