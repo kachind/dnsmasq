@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 wget -O /tmp/dban.iso https://downloads.sourceforge.net/project/dban/dban/dban-2.3.0/dban-2.3.0_i586.iso?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fdban%2Ffiles%2Fdban%2Fdban-2.3.0%2Fdban-2.3.0_i586.iso%2Fdownload%3Fuse_mirror%3Dphoenixnap&ts=1549130611
 sudo mount -o loop /tmp/dban.iso /mnt
 sudo cp /mnt/\* /var/lib/tftpboot
