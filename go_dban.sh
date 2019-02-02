@@ -10,7 +10,7 @@ sudo echo "DEFAULT autonuke
 
 LABEL autonuke
 KERNEL dban.bzi
-APPEND nuke="dwipe --autonuke" silent" > /var/lib/tftpboot/pxelinux.cfg/default
+APPEND nuke=\"dwipe --autonuke\" silent" > /var/lib/tftpboot/pxelinux.cfg/default
 
 sudo chmod -R 755 /var/lib/tftpboot/
 
