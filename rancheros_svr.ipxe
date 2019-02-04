@@ -1,17 +1,17 @@
 #!ipxe
-set base-url http://ec2-18-219-205-208.us-east-2.compute.amazonaws.com
-#kernel ${base-url}/vmlinuz rancher.autologin=tty1 rancher.state.dev=LABEL=RANCHER_STATE rancher.state.autoformat=[/dev/sda] rancher.cloud_init.datasources=[url:${base-url}/cloud-config]
-kernel ${base-url}/vmlinuz rancher.network.interfaces.eth*.dhcp=true rancher.network.dns.nameservers=["8.8.8.8","8.8.4.4"] rancher.state.formatzero=true rancher.state.dev=none rancher.state.autoformat=[/dev/sda] rancher.cloud_init.datasources=[url:${base-url}/cloud-config] rancher.autologin=tty1
-initrd http://releases.rancher.com/os/latest/initrd
-ping --count 1 8.8.8.8 && goto boot || goto default
+ping --count 1 8.8.8.8 && goto boot || goto net0
+
+:net0
+ifconf net0
+ping --count 1 8.8.8.8 && goto boot || goto net1
+
+:net1
+ifconf net1
+ping --count 1 8.8.8.8 && goto boot || goto net0
 
 :boot
-boot
-
-:default
-ifconf eth1
 set base-url http://ec2-18-219-205-208.us-east-2.compute.amazonaws.com
 #kernel ${base-url}/vmlinuz rancher.autologin=tty1 rancher.state.dev=LABEL=RANCHER_STATE rancher.state.autoformat=[/dev/sda] rancher.cloud_init.datasources=[url:${base-url}/cloud-config]
 kernel ${base-url}/vmlinuz rancher.network.interfaces.eth*.dhcp=true rancher.network.dns.nameservers=["8.8.8.8","8.8.4.4"] rancher.state.formatzero=true rancher.state.dev=none rancher.state.autoformat=[/dev/sda] rancher.cloud_init.datasources=[url:${base-url}/cloud-config] rancher.autologin=tty1
 initrd http://releases.rancher.com/os/latest/initrd
-goto boot
+boot
