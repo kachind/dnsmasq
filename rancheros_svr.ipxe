@@ -1,15 +1,16 @@
 #!ipxe
 
-ifconf
+:ethone
+ifconf eth1
 ping --count 1 8.8.8.8 && goto boot || goto ethzero
 
 :ethzero
 ifconf eth0
-ping --count 1 8.8.8.8 && goto boot || goto ethone
+ping --count 1 8.8.8.8 && goto boot || goto ethall
 
-:ethone
-ifconf eth1
-ping --count 1 8.8.8.8 && goto boot || goto ethzero
+:ethall
+ifconf
+ping --count 1 8.8.8.8 && goto boot || goto ethone
 
 :boot
 set base-url http://ec2-18-219-205-208.us-east-2.compute.amazonaws.com
