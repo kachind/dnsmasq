@@ -1,4 +1,15 @@
 #!ipxe
+ping --count 1 8.8.8.8 && goto boot || goto eth0
+
+:eth0
+ifconf eth0
+ping --count 1 8.8.8.8 && goto boot || goto eth1
+
+:eth1
+ifconf eth1
+ping --count 1 8.8.8.8 && goto boot || goto eth0
+
+:boot
 set base-url http://ec2-18-219-205-208.us-east-2.compute.amazonaws.com
 #kernel ${base-url}/vmlinuz rancher.autologin=tty1 rancher.state.dev=LABEL=RANCHER_STATE rancher.state.autoformat=[/dev/sda] rancher.cloud_init.datasources=[url:${base-url}/cloud-config]
 kernel ${base-url}/vmlinuz rancher.network.interfaces.eth*.dhcp=true rancher.network.dns.nameservers=["8.8.8.8","8.8.4.4"] rancher.state.formatzero=true rancher.state.dev=none rancher.state.autoformat=[/dev/sda] rancher.cloud_init.datasources=[url:${base-url}/cloud-config] rancher.autologin=tty1
